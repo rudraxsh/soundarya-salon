@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SOUNDARYA - Premium Ladies Salon</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">THE SOUNDARYA</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#ai-recommender">AI Style</a></li>
+                <li><a href="#gallery">Transformations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>THE SOUNDARYA</h1>
+            <p class="tagline">Elegance Redefined. Beauty Elevated.</p>
+            <p class="subtitle">Premium salon services for the modern woman</p>
+            <button class="btn btn-primary" onclick="scrollToSection('services')">Explore Services</button>
+        </div>
+        <div class="hero-background"></div>
+    </section>
+
+    <!-- Services Menu -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Premium Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💇‍♀️</div>
+                    <h3>Hair Styling</h3>
+                    <p>Cuts, colors, and treatments with premium products</p>
+                    <span class="price">₹1,500 - ₹5,000</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💄</div>
+                    <h3>Makeup Artistry</h3>
+                    <p>Bridal, party, and everyday makeup services</p>
+                    <span class="price">₹800 - ₹3,500</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💅</div>
+                    <h3>Nail Care</h3>
+                    <p>Manicures, pedicures, and gel applications</p>
+                    <span class="price">₹500 - ₹2,000</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Facials & Skincare</h3>
+                    <p>Hydrating, chemical peels, and rejuvenation treatments</p>
+                    <span class="price">₹1,000 - ₹4,000</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧖‍♀️</div>
+                    <h3>Body Massage</h3>
+                    <p>Relaxing and therapeutic spa massages</p>
+                    <span class="price">₹1,200 - ₹3,000</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎀</div>
+                    <h3>Threading & Waxing</h3>
+                    <p>Hair removal and grooming services</p>
+                    <span class="price">₹300 - ₹1,500</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Style Recommender Widget -->
+    <section id="ai-recommender" class="ai-recommender">
+        <div class="container">
+            <h2>AI Style Recommender</h2>
+            <p class="section-subtitle">Get personalized style recommendations powered by AI</p>
+            
+            <div class="recommender-widget">
+                <form id="styleForm">
+                    <div class="form-group">
+                        <label>Face Shape</label>
+                        <select name="faceShape" required>
+                            <option value="">Select your face shape</option>
+                            <option value="oval">Oval</option>
+                            <option value="round">Round</option>
+                            <option value="square">Square</option>
+                            <option value="heart">Heart</option>
+                            <option value="oblong">Oblong</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hair Type</label>
+                        <select name="hairType" required>
+                            <option value="">Select your hair type</option>
+                            <option value="straight">Straight</option>
+                            <option value="wavy">Wavy</option>
+                            <option value="curly">Curly</option>
+                            <option value="coily">Coily</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Skin Tone</label>
+                        <select name="skinTone" required>
+                            <option value="">Select your skin tone</option>
+                            <option value="fair">Fair</option>
+                            <option value="medium">Medium</option>
+                            <option value="olive">Olive</option>
+                            <option value="deep">Deep</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Occasion</label>
+                        <select name="occasion" required>
+                            <option value="">Select occasion</option>
+                            <option value="daily">Daily Wear</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="party">Party</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Get Recommendations</button>
+                </form>
+
+                <div id="recommendations" class="recommendations-box" style="display: none;">
+                    <h3>Your Personalized Recommendations</h3>
+                    <div id="recommendationContent"></div>
+                </div>
+
+                <div id="loadingSpinner" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Getting AI recommendations...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Transformations Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Client Transformations</h2>
+            <p class="section-subtitle">See the magic we create</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1552082692-5b86d0d51c64?w=400&h=400&fit=crop" alt="Hair Transformation 1">
+                    <div class="gallery-overlay">
+                        <p>Modern Bob Cut</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1487412947f7-6e3d3d6b7b8f?w=400&h=400&fit=crop" alt="Bridal Makeup">
+                    <div class="gallery-overlay">
+                        <p>Bridal Glow</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560708457-5a85aecc3ff8?w=400&h=400&fit=crop" alt="Hair Color">
+                    <div class="gallery-overlay">
+                        <p>Balayage Highlights</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1570157394790-c7ae34e17c87?w=400&h=400&fit=crop" alt="Skincare">
+                    <div class="gallery-overlay">
+                        <p>Radiant Skin</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Nail Art">
+                    <div class="gallery-overlay">
+                        <p>Elegant Nails</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=400&fit=crop" alt="Makeup Look">
+                    <div class="gallery-overlay">
+                        <p>Party Makeup</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book on WhatsApp CTA -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform?</h2>
+            <p>Book your appointment on WhatsApp and get instant confirmation</p>
+            <a href="https://wa.me/919876543210?text=Hi%20THE%20SOUNDARYA%2C%20I%20would%20like%20to%20book%20an%20appointment" target="_blank" class="btn btn-whatsapp">
+                <span>📱</span> Book on WhatsApp
+            </a>
+            <p class="contact-info">Or call us: +91-98765-43210</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 THE SOUNDARYA. All rights reserved. | Elegance Redefined</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">Instagram</a>
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
